@@ -1,0 +1,384 @@
+/* =====================================================================
+   Page Pulse — Stylesheet
+   Design language: dark blue gradient background, glassmorphism card,
+   curved buttons/inputs, smooth transitions, Poppins typography.
+   ===================================================================== */
+
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #1e40af;
+  --color-dark: #0f172a;
+  --color-white: #ffffff;
+  --card-radius: 20px;
+  --btn-radius: 50px;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.35s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Decorative ambient glow */
+.background-glow {
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.35), transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow {
+  from { transform: translate(0, 0); }
+  to { transform: translate(10%, 15%); }
+}
+
+.app-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ---------------------------------------------------------------------
+   Glassmorphism Card
+   --------------------------------------------------------------------- */
+.glass-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--card-radius);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.5);
+  padding: 40px;
+  animation: cardEntrance 0.6s ease;
+}
+
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------- */
+.app-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title-icon {
+  font-size: 32px;
+  color: var(--color-primary);
+}
+
+.app-title {
+  font-size: 34px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.app-subtitle {
+  margin-top: 8px;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: #475569;
+}
+
+/* ---------------------------------------------------------------------
+   Input Section
+   --------------------------------------------------------------------- */
+.input-section {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1 1 300px;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 20px;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+.url-input {
+  width: 100%;
+  padding: 15px 20px 15px 46px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14.5px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--btn-radius);
+  background: #f8fafc;
+  color: var(--color-dark);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.url-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.url-input::placeholder {
+  color: #94a3b8;
+}
+
+.analyze-btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--color-white);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border: none;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.6);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+}
+
+.analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 26px -8px rgba(37, 99, 235, 0.75);
+}
+
+.analyze-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------
+   Loading Spinner
+   --------------------------------------------------------------------- */
+.loading-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+  animation: fadeIn 0.3s ease;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid #e2e8f0;
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* ---------------------------------------------------------------------
+   Error Box
+   --------------------------------------------------------------------- */
+.error-box {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #fef2f2;
+  border: 1.5px solid #fecaca;
+  border-radius: 14px;
+  color: #b91c1c;
+  font-size: 14px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-box i {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------
+   Results Section
+   --------------------------------------------------------------------- */
+.results-section {
+  margin-top: 32px;
+  animation: fadeIn 0.4s ease;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.result-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  animation: cardPop 0.45s ease both;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.2);
+}
+
+.result-card .card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  font-size: 16px;
+}
+
+.result-card .card-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+
+.result-card .card-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-dark);
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.result-card.full-width {
+  grid-column: 1 / -1;
+}
+
+@keyframes cardPop {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------- */
+.app-footer {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.app-footer a {
+  color: #93c5fd;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.app-footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive Design
+   --------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .glass-card {
+    padding: 28px 20px;
+  }
+
+  .app-title {
+    font-size: 28px;
+  }
+
+  .input-section {
+    flex-direction: column;
+  }
+
+  .analyze-btn {
+    width: 100%;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

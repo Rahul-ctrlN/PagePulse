@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Pulse | Website Audit Tool</title>
+
+  <!-- Google Font: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <div class="background-glow"></div>
+
+  <main class="app-container">
+    <div class="glass-card">
+
+      <!-- Header -->
+      <header class="app-header">
+        <div class="title-row">
+          <i class="fa-solid fa-wave-square title-icon"></i>
+          <h1 class="app-title">Page Pulse</h1>
+        </div>
+        <p class="app-subtitle">
+          Instantly audit any public webpage — performance, SEO &amp; structure at a glance.
+        </p>
+      </header>
+
+      <!-- Input Section -->
+      <section class="input-section">
+        <div class="input-wrapper">
+          <i class="fa-solid fa-link input-icon"></i>
+          <input
+            type="text"
+            id="urlInput"
+            class="url-input"
+            placeholder="Enter a webpage URL, e.g. https://example.com"
+            autocomplete="off"
+          />
+        </div>
+        <button id="analyzeBtn" class="analyze-btn">
+          <span id="btnText">Analyze</span>
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+        </button>
+      </section>
+
+      <!-- Loading Spinner -->
+      <div id="loadingSection" class="loading-section hidden">
+        <div class="spinner"></div>
+        <p class="loading-text">Analyzing webpage, please wait...</p>
+      </div>
+
+      <!-- Error Message Box -->
+      <div id="errorBox" class="error-box hidden">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span id="errorMessage">Something went wrong.</span>
+      </div>
+
+      <!-- Results Section -->
+      <section id="resultsSection" class="results-section hidden">
+        <div class="results-grid" id="resultsGrid">
+          <!-- Result cards injected dynamically by script.js -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>
+        Built for
+        <a href="https://digitalheroesco.com" target="_blank" rel="noopener noreferrer">
+          Digital Heroes Training Task
+        </a>
+      </p>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
