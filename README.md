@@ -1,194 +1,229 @@
 # Page Pulse 🚀
 
-**Page Pulse** is a lightweight web application that audits any public webpage
-and instantly reports key structural and SEO information — response time,
-HTTP status, title, meta description, heading counts, missing image alt
-attributes, and approximate visible word count.
+## Overview
 
-Built with **Python Flask** on the backend and **HTML / CSS / Vanilla
-JavaScript** on the frontend, with a modern dark-blue glassmorphism UI.
+Page Pulse is a web-based SEO and webpage auditing tool built using Flask. It allows users to enter any public website URL and instantly receive useful webpage insights including HTTP status, response time, page title, meta description, H1 count, missing image alt attributes, and approximate word count.
+
+This project was built as part of the Digital Heroes Software Development Engineering Internship Task.
 
 ---
 
-## 📖 Project Overview
+## Features
 
-| | |
-|---|---|
-| **Frontend** | Single-page responsive UI, dark blue gradient background, glassmorphism card, Poppins typography, Font Awesome icons |
-| **Backend** | Flask REST API (`POST /analyze`) that fetches and parses a target webpage using `requests` + `BeautifulSoup4` |
-| **Purpose** | Built for the Digital Heroes Training Task |
-
-### Features
-- ✅ URL validation (client + server side)
-- ✅ Response time measurement (ms)
-- ✅ HTTP status code detection
-- ✅ Page `<title>` extraction
-- ✅ Meta description extraction
-- ✅ H1 tag counting
-- ✅ Missing `alt` attribute detection on images
-- ✅ Approximate visible word count
-- ✅ 10-second timeout protection
-- ✅ Non-HTML content rejection
-- ✅ Graceful error handling — the API never crashes and always returns JSON
-- ✅ Animated, icon-based result cards
-- ✅ Fully responsive (desktop + mobile)
+- Analyze any public website URL
+- Measure HTTP status code
+- Calculate response time
+- Extract page title
+- Extract meta description
+- Count H1 tags
+- Detect images without ALT text
+- Calculate approximate visible word count
+- Proper error handling for invalid URLs, timeouts and non-HTML pages
+- Clean responsive UI
 
 ---
 
-## 🛠️ Installation
+## Tech Stack
 
-### Prerequisites
-- Python 3.8 or higher
-- `pip` package manager
+### Backend
+- Python
+- Flask
+- Requests
+- BeautifulSoup4
 
-### Steps
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
 
-```bash
-# 1. Clone or download the project
-cd PagePulse
+---
 
-# 2. (Recommended) Create a virtual environment
-python -m venv venv
+## Project Structure
 
-# Activate it:
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
+```
+PagePulse/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── test_app.py
+│
+├── templates/
+│   └── index.html
+│
+├── static/
+│   ├── style.css
+│   └── script.js
 ```
 
 ---
 
-## ▶️ Run Instructions
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/Rahul-ctrlN/PagePulse.git
+```
+
+Open the project
+
+```bash
+cd PagePulse
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
 
 ```bash
 python app.py
 ```
 
-The application will start on:
+Open
 
 ```
 http://127.0.0.1:5000
 ```
 
-Open that URL in your browser, enter any public webpage URL (e.g.
-`https://example.com`), and click **Analyze**.
-
 ---
 
-## 📡 API Documentation
+## API Endpoint
 
-### `POST /analyze`
+### POST /analyze
 
-Analyzes a public webpage and returns structural/SEO metadata.
-
-**Request Body:**
+### Request
 
 ```json
 {
-  "url": "https://example.com"
+  "url":"https://example.com"
 }
 ```
 
-**Success Response — `200 OK`:**
+### Success Response
 
 ```json
 {
-  "status": 200,
-  "response_time": "215 ms",
-  "title": "Example Domain",
-  "meta_description": "No meta description found",
-  "h1_count": 1,
-  "missing_alt_images": 0,
-  "word_count": 28
+  "status":200,
+  "response_time":"165 ms",
+  "title":"Example Domain",
+  "meta_description":"Example description",
+  "h1_count":1,
+  "missing_alt_images":0,
+  "word_count":132
 }
 ```
 
-**Error Responses:**
-
-| Scenario | HTTP Code | Body |
-|---|---|---|
-| Invalid/malformed URL | `400` | `{"error": "Invalid URL"}` |
-| Request exceeds 10s | `408` | `{"error": "Request Timed Out"}` |
-| Cannot connect to host | `502` | `{"error": "Unable to reach website"}` |
-| Response is not HTML | `415` | `{"error": "The URL does not contain an HTML webpage."}` |
-| Unexpected server issue | `500` | `{"error": "Internal server error"}` |
-
-The API **never crashes** — all failure paths are caught and return a
-valid JSON payload.
-
 ---
 
-## 🖼️ Screenshots
+## Error Responses
 
-> _Add screenshots of the running application here._
+### Invalid URL
 
-- `screenshots/home-screen.png` — Landing page with empty input
-- `screenshots/loading-state.png` — Loading spinner while analyzing
-- `screenshots/results-view.png` — Populated result cards
-- `screenshots/error-state.png` — Error alert box example
-
----
-
-## ☁️ Deployment Instructions
-
-### Option 1: Render / Railway / Heroku (Gunicorn)
-
-1. Add a `Procfile` with:
-   ```
-   web: gunicorn app:app
-   ```
-2. Add `gunicorn` to `requirements.txt`.
-3. Push the repository to your platform of choice and set the start
-   command to `gunicorn app:app`.
-
-### Option 2: Docker
-
-```dockerfile
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-EXPOSE 5000
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+```json
+{
+  "error":"Invalid URL"
+}
 ```
+
+### Timeout
+
+```json
+{
+  "error":"Request Timed Out"
+}
+```
+
+### Website Unreachable
+
+```json
+{
+  "error":"Unable to reach website"
+}
+```
+
+### Non HTML Page
+
+```json
+{
+  "error":"The URL does not contain an HTML webpage."
+}
+```
+
+---
+
+## Testing
+
+This project includes automated tests using **pytest**.
+
+Run tests:
 
 ```bash
-docker build -t page-pulse .
-docker run -p 5000:5000 page-pulse
+pytest -v test_app.py
 ```
 
-### Option 3: Traditional VPS (Nginx + Gunicorn)
+Current Result
 
-1. Install dependencies in a virtual environment on the server.
-2. Run the app with Gunicorn: `gunicorn -w 4 -b 127.0.0.1:5000 app:app`
-3. Configure Nginx as a reverse proxy to `127.0.0.1:5000`.
-4. (Optional) Set up HTTPS via Let's Encrypt / Certbot.
+```
+3 tests passed
+```
+
+Tests include:
+
+- Home page loading
+- Invalid URL handling
+- Empty URL handling
 
 ---
 
-## 📁 Folder Structure
+## Design Decisions
 
-```
-PagePulse/
-├── app.py
-├── requirements.txt
-├── templates/
-│   └── index.html
-├── static/
-│   ├── style.css
-│   └── script.js
-├── README.md
-└── .gitignore
-```
+### 1. Flask
+
+Flask was selected because it is lightweight, simple and well suited for building REST APIs.
+
+### 2. BeautifulSoup
+
+BeautifulSoup was used to efficiently parse HTML and extract webpage information.
+
+### 3. JSON API
+
+All responses including errors are returned as JSON, making frontend integration clean and consistent.
 
 ---
 
-## 🙏 Credits
+## AI Usage
 
-Built for **Digital Heroes Training Task** —
-[digitalheroesco.com](https://digitalheroesco.com)
+AI tools were used to assist with UI design, debugging, documentation, and improving code structure. The final implementation, testing, deployment, and verification were completed by me.
+
+---
+
+## Future Improvements
+
+- Lighthouse style SEO score
+- PageSpeed Insights integration
+- Accessibility checks
+- Broken link detection
+- Open Graph metadata analysis
+- Export reports as PDF
+
+---
+
+## Author
+
+Rahul T
+
+GitHub:
+https://github.com/Rahul-ctrlN/PagePulse
+
+---
+
+## Credits
+
+Built for **Digital Heroes Training Task**
+
+https://digitalheroesco.com
