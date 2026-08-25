@@ -5,11 +5,11 @@
    ===================================================================== */
 
 :root {
-  --color-primary: #2563eb;
-  --color-secondary: #a8baf7;
+  --color-primary: #4b77d4;
+  --color-secondary: #2847af;
   --color-dark: #0f172a;
   --color-white: #ffffff;
-  --card-radius: 20px;
+  --card-radius: 19px;
   --btn-radius: 50px;
   --transition-fast: 0.2s ease;
   --transition-medium: 0.35s ease;
