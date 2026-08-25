@@ -227,3 +227,8 @@ https://github.com/Rahul-ctrlN/PagePulse
 Built for **Digital Heroes Training Task**
 
 https://digitalheroesco.com
+## How to Run
+
+1. Open the project in VS Code.
+2. Compile the Java files.
+3. Run the main class.
