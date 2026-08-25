@@ -162,7 +162,7 @@ async function handleAnalyze() {
   resetUIState();
 
   if (!url) {
-    showError("Please enter a URL to analyze.");
+    showError("Please enter a URL to analyze...");
     return;
   }
 
@@ -183,7 +183,7 @@ async function handleAnalyze() {
     const data = await response.json();
 
     if (!response.ok || data.error) {
-      showError(data.error || "An unexpected error occurred.");
+      showError(data.error || "An unexpected error occurred !");
       return;
     }
 
