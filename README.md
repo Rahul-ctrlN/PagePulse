@@ -216,7 +216,7 @@ AI tools were used to assist with UI design, debugging, documentation, and impro
 ## Author
 
 Rahul T
-
+mail id:trahul0803@gmail.com
 GitHub:
 https://github.com/Rahul-ctrlN/PagePulse
 
@@ -231,4 +231,4 @@ https://digitalheroesco.com
 
 1. Open the project in VS Code.
 2. Compile the Java files.
-3. Run the main class.
+3. Run the main class
