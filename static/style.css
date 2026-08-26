@@ -312,11 +312,12 @@ body {
 }
 
 .result-card .card-value {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--color-dark);
   word-break: break-word;
-  line-height: 1.35;
+  line-height: 1.45;
+  letter-spacing: 0.2px;
 }
 
 .result-card.full-width {
