@@ -27,3 +27,11 @@ def test_empty_url():
 
     assert response.status_code == 400
     assert response.get_json()["error"] == "Invalid URL"
+    def test_missing_url():
+    response = client.post(
+        "/analyze",
+        json={}
+    )
+
+    assert response.status_code == 400
+    assert response.get_json()["error"] == "Invalid URL"
