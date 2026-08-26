@@ -12,7 +12,7 @@
   --card-radius: 19px;
   --btn-radius: 50px;
   --transition-fast: 0.2s ease;
-  --transition-medium: 0.35s ease;
+  --transition-medium: 0.3s ease;
 }
 
 * {
@@ -108,7 +108,7 @@ body {
 }
 
 .title-icon {
-  font-size: 32px;
+  font-size: 31px;
   color: var(--color-primary);
 }
 
@@ -233,8 +233,8 @@ body {
 }
 
 .loading-text {
-  font-size: 14px;
-  color: #64748b;
+  font-size: 13px;
+  color: #738bad;
 }
 
 /* ---------------------------------------------------------------------
@@ -247,11 +247,11 @@ body {
   gap: 12px;
   padding: 16px 20px;
   background: #fef2f2;
-  border: 1.5px solid #fecaca;
+  border: 1.5px solid #df8d8d;
   border-radius: 14px;
-  color: #b91c1c;
+  color: #bc3131;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 450;
   animation: fadeIn 0.3s ease;
 }
 
@@ -275,8 +275,8 @@ body {
 }
 
 .result-card {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #d2e2f3;
+  border: 1px solid #bec4cc;
   border-radius: 16px;
   padding: 20px;
   display: flex;
@@ -288,7 +288,7 @@ body {
 
 .result-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 12px 24px -10px rgba(35, 53, 97, 0.2);
 }
 
 .result-card .card-icon {
@@ -304,9 +304,9 @@ body {
 }
 
 .result-card .card-label {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 550;
+  text-transform: lowercase;
   letter-spacing: 0.5px;
   color: #64748b;
 }
@@ -316,7 +316,7 @@ body {
   font-weight: 600;
   color: var(--color-dark);
   word-break: break-word;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .result-card.full-width {
@@ -348,7 +348,7 @@ body {
 
 .app-footer a {
   color: #93c5fd;
-  font-weight: 600;
+  font-weight: 595;
   text-decoration: none;
   transition: color var(--transition-fast);
 }
@@ -363,7 +363,7 @@ body {
    --------------------------------------------------------------------- */
 @media (max-width: 640px) {
   .glass-card {
-    padding: 28px 20px;
+    padding: 28px 21px;
   }
 
   .app-title {
