@@ -11,7 +11,7 @@
   --color-white: #ffffff;
   --card-radius: 19px;
   --btn-radius: 50px;
-  --transition-fast: 0.2s ease;
+  --transition-fast: 0.3s ease;
   --transition-medium: 0.3s ease;
 }
 
@@ -288,7 +288,7 @@ body {
 
 .result-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px -10px rgba(35, 53, 97, 0.2);
+  box-shadow: 0 12px 24px -10px rgba(34, 53, 97, 0.2);
 }
 
 .result-card .card-icon {
