@@ -348,15 +348,15 @@ body {
 }
 
 .app-footer a {
-  color: #93c5fd;
+  color: #79a0cd;
   font-weight: 595;
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .app-footer a:hover {
-  color: #ffffff;
-  text-decoration: underline;
+  color: #e19d9d;
+  text-decoration: underline,bold;
 }
 
 /* ---------------------------------------------------------------------
