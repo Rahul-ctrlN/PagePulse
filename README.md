@@ -216,7 +216,7 @@ AI tools were used to assist with UI design, debugging, documentation, and impro
 ## Author
 
 Rahul T
-mail id:trahul0803@gmail.com
+mail id: trahul0803@gmail.com
 GitHub:
 https://github.com/Rahul-ctrlN/PagePulse
 

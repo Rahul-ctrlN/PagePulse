@@ -68,10 +68,6 @@ const CARD_CONFIG = [
   },
 ];
 
-// ---------------------------------------------------------------------
-// UI State Helpers
-// ---------------------------------------------------------------------
-
 /** Reset all result/error/loading UI sections to their initial state. */
 function resetUIState() {
   errorBox.classList.add("hidden");
@@ -153,9 +149,7 @@ function looksLikeUrl(value) {
   return /^https?:\/\/.+/i.test(value.trim());
 }
 
-// ---------------------------------------------------------------------
-// Main Analyze Handler
-// ---------------------------------------------------------------------
+
 async function handleAnalyze() {
   const url = urlInput.value.trim();
 
